@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Environment/Raw Assets/grass_lowres.png" type="Texture" id=1]
 [ext_resource path="res://Environment/Assets/brickwall.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Environment/Assets/shed.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Characters/Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Characters/Enemies/Bird Monster.tscn" type="PackedScene" id=5]
 
 [sub_resource type="ProceduralSky" id=1]
 sky_top_color = Color( 0.156863, 0.184314, 0.211765, 1 )
@@ -44,10 +45,18 @@ light_color = Color( 0.898039, 0.0980392, 0.0980392, 1 )
 shadow_enabled = true
 
 [node name="Navigation" type="Navigation" parent="."]
+__meta__ = {
+"_edit_lock_": true
+}
 
 [node name="NavigationMeshInstance" type="NavigationMeshInstance" parent="Navigation"]
 visible = false
 navmesh = SubResource( 3 )
+
+[node name="Bird Monster" parent="Navigation" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -9.76439, 1, 0 )
+sight_angle = 45.0
+turn_speed = 180.0
 
 [node name="Environment" type="Spatial" parent="."]
 __meta__ = {

@@ -42,8 +42,8 @@ func attack(attack_just_pressed: bool, attack_held: bool):
 		return
 		
 	if ammo == 0:
+		anim_player.play("Idle")
 		if attack_just_pressed:
-			anim_player.play("Idle")
 			emit_signal("out_of_ammo")
 		return
 	
@@ -66,7 +66,9 @@ func finish_attack():
 	
 func set_active():
 	show()
+	$CrossHair.show()
 	
 func set_inactive():
 	anim_player.play("Idle")
 	hide()
+	$CrossHair.hide()
